@@ -1,5 +1,5 @@
 fastapi==0.116.1
-firebase==4.0.1
+#firebase==4.0.1
 firebase_admin==7.0.0
 pydantic==2.11.7
 pydantic_core==2.33.2
