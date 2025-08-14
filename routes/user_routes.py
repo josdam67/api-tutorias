@@ -14,7 +14,7 @@ def register(data: UserCreate):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-#Haremos un login para verificar 
+#podriamos crear un login para verficar 
 @router.post("/loginn")
 def login_datos(data: UserLogin):
     try:
@@ -22,7 +22,7 @@ def login_datos(data: UserLogin):
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e))
     
-#un login con el Firebase Token
+#haciendo un login con el firebase token
 @router.post("/login")
 def login(payload: FirebaseLogin):
     try:
