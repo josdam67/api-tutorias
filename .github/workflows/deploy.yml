@@ -1,20 +1,3 @@
-##name: Deploy to Railway
-
-#on:
- # push:
-   # branches: [ main ]
-###
-#jobs:
- # helloworld:
-  #  runs-on: ubuntu-latest
-#
- #   steps:
- #     - uses: actions/checkout@v4
-#
-  #    - name: Imprimir en consola
- #       run: echo "Hello World, GITHUB ACTIONS"
-##
-
 name: Deploy to Railway
 
 on:
@@ -98,17 +81,17 @@ jobs:
            # Verify installation
            railway --version || railway version || echo "Railway CLI installed but version check failed"
         
-      - name: Deply to Railway
+      - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          run: |
-            echo "starting deployment..."
-            railway up --service "api_tutorias" || \
-            railway up --service api_tutorias || \
-            railway up --service web || \
-            railway up --service api || \
-            railway up --service api-tutorias || \
-            railway up --service tutorias || \
-            railway up --service backend || \
-            (echo " creating new service and deploying" && railway up)
+        run: |
+          echo "starting deployment..."
+          railway up --service "api_tutorias" || \
+          railway up --service api_tutorias || \
+          railway up --service web || \
+          railway up --service api || \
+          railway up --service api-tutorias || \
+          railway up --service tutorias || \
+          railway up --service backend || \
+          (echo " creating new service and deploying" && railway up)
 
