@@ -6,6 +6,7 @@ import uvicorn
 import os
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from utils.mongo import get_collection, test_connection
 
 from controllers.user_controller import register_user
 from models.user_model import UserBase, FirebaseLogin
@@ -51,7 +52,40 @@ async def create_user_endpoint(user: UserBase) -> UserBase:
 
 @app.post("/login")
 async def login_access(l: FirebaseLogin) -> dict:
-    return await FirebaseLogin(l)
+    return 1
+
+
+@app.get("/health")
+def health_check():
+    try:
+        return {
+            "status": "helalthy",
+            "timestamp": "2025-08-9",
+            "service": "API Tutorías",
+            "environment": "production"
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "error": str(e)
+        }   
+    
+@app.get("/ready")
+def readiness_check():
+    try:
+        from utils.mongo import test_connection
+        db_status = test_connection()
+        return {
+            "status": "ready" if db_status else "not ready",
+            "database": "conected" if db_status else "disconnected",
+            "service": "API Tutorías",
+        }
+    except Exception as e:
+        return {
+            "status": "not ready",
+            "error": str(e)
+        }
+    
 
 
 
