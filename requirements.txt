@@ -10,3 +10,5 @@ python-jose==3.5.0
 uvicorn==0.35.0
 #pyenv == 3.10.5
 pytest==8.4.1
+email-validator
+requests==2.32.3

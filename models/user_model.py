@@ -4,10 +4,6 @@ from datetime import datetime
 
 
 class UserBase(BaseModel):
-    #id_usuario: Optional[str] = Field(
-      #  default=None,
-       # description="MongoDB ID"
-    #)
     nombre: str = Field(
         description="User First Name"
     )
@@ -25,7 +21,7 @@ class UserBase(BaseModel):
     )
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(min_length=8)
 
 
 class UserDB(UserBase):
