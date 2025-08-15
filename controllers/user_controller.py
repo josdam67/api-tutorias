@@ -12,6 +12,7 @@ import requests
 users_col = db["usuarios"]
 
 def register_user(data):
+    
     # Crea usuario en Firebase
     firebase_uid = create_firebase_user(data["email"], data["password"])
 

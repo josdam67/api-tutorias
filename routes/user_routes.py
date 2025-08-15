@@ -30,12 +30,12 @@ def register_no_slash(data: UserCreate):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.post("/")  # /users/
-def register_slash(data: UserCreate):
-    try:
-        return user_controller.register_user(data.dict())
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+#@router.post("/")  # /users/
+#def register_slash(data: UserCreate):
+ #   try:
+  #    return user_controller.register_user(data.dict())
+   # except Exception as e:
+   #     raise HTTPException(status_code=400, detail=str(e))
 
 # Login email/password
 @router.post("/loginn")
